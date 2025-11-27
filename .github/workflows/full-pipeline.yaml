@@ -95,6 +95,11 @@ jobs:
       run: bash ci/build-docker.sh
     - name: push docker
       run: bash ci/push-docker.sh
+    - name: Setup Kosli CLI
+      uses: kosli-dev/setup-cli-action@v2
+      with:
+        version:
+          2.11.32
     - name: Attest Docker image
       run: |
         IMAGE_NAME="ghcr.io/${IMAGE}:latest"
