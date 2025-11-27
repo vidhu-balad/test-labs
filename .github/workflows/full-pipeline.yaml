@@ -121,7 +121,7 @@ jobs:
     - name: Attest SBOM
       run: |
         IMAGE_NAME="ghcr.io/${IMAGE}:latest"
-        kosli attest sbom \
+        kosli attest generic \
           --flow ${APP_NAME}-pipeline \
           --trail ${GIT_COMMIT} \
           --name docker-image.sbom \
