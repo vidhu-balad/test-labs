@@ -30,7 +30,7 @@ jobs:
       - name: Create/Update Flow
         run: |
           kosli create flow ${APP_NAME}-pipeline \
-          --template-file flow-template.yaml
+            --template-file flow-template.yaml
       - name: Begin Trail
         run: |
           kosli begin trail ${GIT_COMMIT} \
