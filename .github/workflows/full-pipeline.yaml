@@ -1,7 +1,7 @@
 name: Main workflow
 on: [push, workflow_dispatch]
 env: # Set the secret as an input
-  docker_username: ${{ secrets.DOCKER_USERNAME }} 
+  docker_username: ${{ github.actor }} 
   docker_password: ${{ secrets.DOCKERHUB_TOKEN }} #Nees to be set to be made available to the workflow
   APP_NAME: ${{ github.event.repository.name }}
   BUILD_NUMBER: ${{ github.run_number }}
