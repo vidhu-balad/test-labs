@@ -6,4 +6,4 @@ services:
     depends_on:
       - web
   web:
-    image: ghcr.io/${docker_username}/test-labs:latest
+    image: ghcr.io/${docker_username}/${IMAGE}:latest
