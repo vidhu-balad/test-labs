@@ -1,6 +1,5 @@
-description: "CI/CD pipeline for labs application"
-visibility: private
-template:
+version: 1
+trial:
   artifacts:
     - name: application
       attestations:
