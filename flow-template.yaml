@@ -4,8 +4,8 @@ trial:
     - name: application
       attestations:
         - name: unit-tests
-          required: true
+          type: junit
     - name: docker-image
       attestations:
         - name: sbom
-          required: true
+          type: generic
