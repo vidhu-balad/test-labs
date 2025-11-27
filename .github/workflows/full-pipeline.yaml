@@ -126,7 +126,7 @@ jobs:
           --trail ${GIT_COMMIT} \
           --name docker-image.sbom \
           --artifact-type oci ${IMAGE_NAME} \
-          --sbom sbom.spdx.json
+          --attachments sbom.spdx.json
 
   Security-scan:
     runs-on: ubuntu-latest
