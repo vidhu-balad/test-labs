@@ -30,8 +30,7 @@ jobs:
       - name: Create/Update Flow
         run: |
           kosli create flow ${APP_NAME}-pipeline \
-            --description "CI/CD pipeline for ${APP_NAME} application" \
-            --use-empty-template
+          --template-file flow-template.yaml
       - name: Begin Trail
         run: |
           kosli begin trail ${GIT_COMMIT} \
@@ -178,6 +177,18 @@ jobs:
       with:
         name: code 
         path: .
+    - name: Setup Kosli CLI
+      uses: kosli-dev/setup-cli-action@v2
+      with:
+        version:
+          2.11.32
+    - name: Assert Compliance
+      run: |
+        IMAGE_NAME="ghcr.io/${IMAGE}:latest"
+        kosli assert artifact ${IMAGE_NAME} \
+          --artifact-type oci \
+          --flow ${APP_NAME}-pipeline \
+          --trail ${GIT_COMMIT}
     - name: Deploy to production
       run: bash ci/start-application.sh
     - name: stop production environment
