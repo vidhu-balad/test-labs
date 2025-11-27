@@ -39,6 +39,16 @@ jobs:
             --description "Build ${BUILD_NUMBER}: ${GIT_BRANCH}"
       - name: Build application
         run: bash ci/build-app.sh
+      - name: Attest application artifact
+        run: |
+          JAR_FILE=$(ls app/build/libs/app-*-all.jar)
+          kosli attest artifact ${JAR_FILE} \
+            --artifact-type file \
+            --flow ${APP_NAME}-pipeline \
+            --trail ${GIT_COMMIT} \
+            --name application \
+            --build-url ${BUILD_URL} \
+            --commit-url ${COMMIT_URL}
       - name: Test
         run: bash ci/unit-test-app.sh
       - name: Upload repo
