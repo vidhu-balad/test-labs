@@ -188,7 +188,6 @@ jobs:
         kosli assert artifact ${IMAGE_NAME} \
           --artifact-type oci \
           --flow ${APP_NAME}-pipeline \
-          --trail ${GIT_COMMIT}
     - name: Deploy to production
       run: bash ci/start-application.sh
     - name: stop production environment
